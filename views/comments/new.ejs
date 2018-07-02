@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+<div class="ui main text container">
+   <div  id="new_title" class="ui huge header">Add New Comment to <%= preview.title %></div>
+   <form class="ui form" action="/previews/<%= preview._id %>/comments"?_method=PUT method="POST">
+      <div class="field">
+         <label>Message</label>
+         <textarea name="comment[text]"></textarea>
+      </div>
+      <input class="ui green button" type="submit" value="Submit new comment">
+   </form>
+</div>
+<% include ../partials/footer %>

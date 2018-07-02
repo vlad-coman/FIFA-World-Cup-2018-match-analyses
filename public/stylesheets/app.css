@@ -1,0 +1,93 @@
+
+body{
+	/*height: 100%;*/
+	background: #ceced2;
+	background-image: url("/images/background/background.jpg")
+}
+.textWhite {
+	color:white;
+}
+.navbarFont {
+	font-family: 'Exo', sans-serif;"
+}
+
+i.icon {
+    font-size: 2em;
+}
+
+.container.main {
+    margin-top: 2.5em;
+}
+#dateCreatedPreview{
+	text-transform: none;
+}
+.textCentered {
+	text-align: center;
+}
+.ui.raised {
+	margin-top: 3em;
+} 
+.ui.fluid.selection.dropdown {
+	padding-bottom: 7;
+}
+.medium.textWhite.textCentered {
+	margin-top: 2em;
+	font-size: 1.25em;
+}
+
+#delete {
+    display: inline;
+}
+
+#preview_content {
+	margin-top: 1.3em;
+	margin-bottom: 1.3em;
+
+}
+
+.content span {
+   color: white;
+}
+
+.textRed{
+	color: red;
+}
+
+#app_title {
+	margin-bottom: 1.3em;
+	color: white;
+}
+
+#text_body {
+	text-align: justify;
+}
+
+
+#no_match,#app_title, #edit_title, #new_title, #show_title, #preview_title,#newPreviewTitle, #newPreviewImage, #competition, #newPreviewTextarea,#stadium,
+#firstName, #avatar, #lastName, #email, #password, #username, #confirmPsassword, #loginUsername, 
+#loginPassword,#resetPassword, #confirmResetPassword, #hour, #date, #forgotAccount, #dateCreatedPreview, #adminCode1, #adminCode {
+	color: white;
+}
+
+.avatar {
+	max-weight: 30px;
+	max-height: 30px;
+}
+
+.show_hide{
+	display:none;
+}
+
+/*Styling Comment's edit, reply and delete buttons*/
+.deleteCommentsForm{
+	display: inline-block;
+}
+
+.navbarColor {
+	background: #E3E0E0;
+}
+
+/*#jumbo{
+     background: white;
+}
+*/

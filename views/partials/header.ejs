@@ -1,0 +1,42 @@
+<html>
+   <head>
+      <title>World Cup 2018</title>
+      <link href="https://fonts.googleapis.com/css?family=Exo:300i" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.css">
+      <link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+   </head>      
+   <body>
+      <div class="ui grey static massive stackable menu ">
+         <div class="item">
+            <img src="/images/logo/logo.jpeg">
+         </div>
+         <a class="item navbarFont"  href="/">Home</a>
+         <a href="/previews/new" class="item navbarFont">Add Preview</a>
+         <div class="right menu">
+            <% if(!currentUser) { %>
+            <a href="/register" class="item navbarFont">Register</a>
+            <a href="/login" class="item navbarFont">Sign-in</a>
+            <% } else { %>
+            <a href="/logout" class="item navbarFont">Logout</a>
+            <a href="/users/<%= currentUser._id %>" class="item navbarFont">Welcome,&nbsp;<%= currentUser.username %></a>
+            <% } %>
+         </div>
+      </div>
+      <!-- FLASH MESSAGES -->
+      <div class="ui main text container">
+         <% if(error && error.length>0){ %> 
+         <div class="ui error message">
+            <div class="header">
+               <%=error%>
+            </div>
+         </div>
+         <% } %>
+         <% if(success && success.length>0){ %> 
+         <div class="ui success message">
+            <div class="header">
+               <%=success%>
+            </div>
+         </div>
+         <% } %>
+      </div>

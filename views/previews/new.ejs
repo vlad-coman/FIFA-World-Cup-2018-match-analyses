@@ -1,0 +1,66 @@
+<% include ../partials/header %>
+
+<div class="ui main text container">
+   <div  id="new_title" class="ui huge header">New Match Preview</div>
+   <form class="ui form" action="/previews" method="POST" enctype="multipart/form-data">
+      <div class="field">
+         <label id="newPreviewTitle" >Title</label>
+         <input type="text" name="preview[title]" placeholder= "title" >
+      </div>
+      <div class="field">
+         <label id="competition" >Stage of the competition</label>
+         <select class="ui fluid selection dropdown" name="preview[competition]">
+            <option value="" disabled selected>Stage</option>
+            <option value="World Cup Group A">World Cup Group A</option>
+            <option value="World Cup Group B">World Cup Group B</option>
+            <option value="World Cup Group C">World Cup Group C </option>
+            <option value="World Cup Group D">World Cup Group D</option>
+            <option value="World Cup Group E">World Cup Group E</option>
+            <option value="World Cup Group F">World Cup Group F</option>
+            <option value="World Cup Group G">World Cup Group G</option>
+            <option value="World Cup Group H">World Cup Group H</option>
+            <option value="2018 World Cup Round of 16">2018 World Cup Round of 16</option>
+            <option value="2018 World Quarter-Final">2018 World Quarter-Final</option>
+            <option value="2018 World Semi-Final">2018 World Semi-Final</option>
+            <option value="2018 World FINAL">2018 World FINAL</option>
+         </select>
+      </div>
+      <div class="field">
+         <label id="newPreviewImage" for="image" class="textWhite" >Image</label>
+         <input type="file" id="image" name="image" placeholder="image" accept="image/*" required>
+      </div>
+      <div class="field">
+         <label id="stadium">Stadium</label>
+         <select class="ui fluid selection dropdown" name="preview[stadium]">
+            <option value="" disabled selected>Stadium</option>
+            <option value="Luzhniki Stadium, Moskow">Luzhniki Stadium</option>
+            <option value="Saint Petersburg Stadium">Saint Petersburg Stadium</option>
+            <option value="Fisht Stadium,Sochi">Fisht Stadium </option>
+            <option value="Ekaterinburg Arena">Ekaterinburg Arena</option>
+            <option value="Kazan Arena">Kazan Arena</option>
+            <option value="Nizhny Novgorod Stadium">Nizhny Novgorod Stadium</option>
+            <option value="Rostov Arena">Rostov Arena</option>
+            <option value="Samara Arena">Samara Arena</option>
+            <option value="Mordovia Arena, Sarnask">Mordovia Arena</option>
+            <option value="Volgograd Stadium">Volgograd Stadium</option>
+            <option value="Spartak Stadium, Moskow">Spartak Stadium</option>
+            <option value="Kaliningrad Stadium">Kaliningrad Stadium</option>
+         </select>
+      </div>
+      <div class="field">
+         <label id="date">Date</label>
+         <input  name="preview[date]" type="date">
+      </div>
+      <div class="field">
+         <label id="hour">Starting hour</label>
+         <input name="preview[hour]" type="time">
+      </div>
+      <div class="field">
+         <label id="newPreviewTextarea">Match Preview text</label>
+         <textarea name="preview[body]"></textarea>
+      </div>
+      <input class="ui green button" type="submit" value="Create new Preview">
+   </form>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,58 @@
+<% include partials/header %>
+
+<div class="ui main text container">
+   <form class="ui form  registerForm" action="/register" method="POST">
+      <div class="field">
+         <label id="firstName">First Name</label>
+            <% checkForErrors('firstName') %>
+         <input type="text" name="firstName" placeholder="eg. John">
+      </div>
+      <div class="field">
+         <label id="lastName">Last Name</label>
+            <% checkForErrors('lastName') %>
+         <input type="text" name="lastName" placeholder="eg. Doe">
+      </div>
+      <div class="field">
+         <label id="email">E-mail</label>
+            <% checkForErrors('email') %>   
+         <input type="email" name="email" placeholder="eg. johnDoe10@gmail.com">
+      </div>
+      <div class="field">
+         <label id="username">Username</label>
+            <% checkForErrors('username') %>
+         <input type="text" name="username" placeholder="eg. johnDoe10">
+      </div>
+      <div class="field">
+         <label id="avatar">Profile picture Url (optional)</label>
+         <input type="text" name="avatar" placeholder="image url">
+      </div>
+      <div class="field">
+         <label id="password">Password</label>
+            <% checkForErrors('password') %>
+         <input type="password" name="password" >
+      </div>
+      <div class="field">
+         <label id="confirmPsassword">Confirm Password</label>
+            <% checkForErrors('confirmPassword') %>
+         <input type="password" name="confirmPassword" >
+      </div> 
+      <div class="field">
+         <label id="adminCode1">Admin Code (only if you are administrator)</label>
+            <% checkForErrors('adminCode') %>
+         <input type="text" name="adminCode" >
+      </div>
+      <input class="ui green button" type="submit" value="Create account">
+   </form>
+</div>
+
+<%function checkForErrors(param){%>
+   <% if(errors && errors.length>0) {%>
+      <% for(let i=0;i<errors.length;i++){ %>
+         <% if(errors[i].param === param){ %>      
+            <div class="textRed"><%= errors[i].msg%></div>    
+         <% } %>
+      <% } %> 
+   <% } %>
+<% } %>
+
+<% include partials/footer %>

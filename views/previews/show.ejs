@@ -1,0 +1,127 @@
+<% include ../partials/header %>
+
+<div class="ui main text container segment ">
+   <!------------------------------PREVIEW ----------------------------------------->
+   <div id="show_title" class="ui huge header"><%=preview.title %></div>
+   <div class="ui top attached ">
+      <!-- preview image -->
+      <div class="item">
+         <img class="ui centered rounded image" src="<%= preview.image %>" >
+      </div>
+      <div class="content">
+         <!-- preview date creation -->
+         <span><%= preview.created.toDateString() %></span>
+         <!-- preview author -->
+         <div class="description">
+            <em>Added by: <b><a href="/users/<%= preview.author.id %>"><%= preview.author.username %></a></b></em>
+         </div>
+         <!-- preview content -->
+         <div id="preview_content" class="description ">
+            <p><%- preview.body %></p>
+         </div>
+      </div>
+      <a class="ui green button tiny " href="/previews/<%= preview._id %>/comments/new">Add comment</a>
+      <!-- checking if current user exist and if the preview belongs to him -->
+      <% if(currentUser && preview.author.id.equals(currentUser._id)){ %>
+         <a class="ui right floated button  tiny " href="/previews/<%= preview._id %>/edit">Edit</a>
+         <form id="delete" action="/previews/<%=preview._id%>?_method=DELETE" method="POST">
+            <button class="ui right floated button red tiny">Delete</button>
+         </form>
+      <% } %>
+   </div>
+   <!------------------PREVIEW'S COMMENTS------------------------------>
+   <div class="ui small comments">
+      <h3 class="ui dividing header">Comments</h3>
+      <% preview.comments.forEach(function(comment){ %>
+         <div class="ui comments">
+            <div class="comment">
+               <a href="/users/<%=comment.author.id%>" class="avatar">
+                  <img src="<%=comment.author.avatar%>"> 
+               </a>
+               <div class="content">
+                  <a href="/users/<%=comment.author.id%>" class="author"><%= comment.author.username %></a>
+                  <div class="metadata">
+                     <div class="date"><%= moment(comment.date).fromNow() %></div>
+                  </div>
+                  <div class="text">
+                     <%= comment.text %> 
+                  </div>
+                  <div class="actions">
+                     <% if(currentUser){ %>   
+                        <a class="reply replyButton">Reply</a>
+                     <% } else { %> 
+                        <a href="/login" class="reply">Reply</a>
+                     <% } %> 
+                     <% if (comment.replies.length>0){ %>
+                        <a class="hide_show_replies" >Show Replies</a>
+                     <% } %> 
+                     <% if (currentUser && comment.author.id.equals(currentUser._id)){ %>
+                        <a href="/previews/<%= preview._id%>/comments/<%=comment._id%>/edit" class="edit">Edit</a>
+                        <form style='display: inline' class="deleteCommentsForm" action="/previews/<%=preview._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                           <a class="edit deleteCommentsButton">Delete</a>
+                        </form>
+                     <% } %>
+                  </div>
+                  <form  class="repy_form ui reply form show_hide" action="/previews/<%= preview._id %>/comments/<%= comment._id %>/replies" method="POST">
+                     <div class="field">
+                        <textarea name="content" autofocus></textarea>
+                     </div>
+                     <div>
+                        <button type="submit" class="mini ui grey button">Add Reply</button>
+                     </div>
+                  </form>
+
+                  <!------------------------- THE REPLIES FOR EACH COMMENT ---------------------------------->
+                  <% if (comment.replies.length>0){ %>
+                     <p></p>
+                     <div class="repliesContainerForOneComment show_hide">
+                        <% comment.replies.forEach((reply) => { %>
+                           <div class="comment">
+                              <a href="/users/<%= reply.author._id%>" class="avatar">   
+                              <img src="<%= reply.avatar%>">
+                              </a>
+                              <div class="content">
+                                 <a href="/users/<%= reply.author._id%>" class="author"><%= reply.username %></a>
+                                 <div class="metadata">
+                                    <div class="date"><%= moment(reply.date).fromNow() %></div>
+                                 </div>
+                                 <div class="metadata">
+                                    <span class="date">Just now</span>
+                                 </div>
+                                 <div class="text">
+                                    <%= reply.content %>
+                                 </div>
+                                 <div class="actions">
+                                    <% if(currentUser){ %>  
+                                       <a class="replyButton reply ">Reply</a>
+                                    <% } else { %> 
+                                       <a href="/login" class="reply ">Reply</a>
+                                    <% } %>
+                                    <% if (currentUser && reply.author.equals(currentUser._id)){ %>
+                                       <a href="/previews/<%= preview._id%>/comments/<%=comment._id%>/replies/<%=reply._id %>/edit" class="edit">Edit</a>
+                                       <form style="display:inline" class="deleteCommentsForm deleteRepliesForms" action="/previews/<%=preview._id%>/comments/<%=comment._id%>/replies/<%=reply._id %>?_method=DELETE" method="POST">
+                                          <a class="delete deleteRepliesButtons">Delete</a>
+                                       </form>
+                                    <% } %>
+                                 </div>
+                                 <form  class="repy_form ui reply form show_hide" action="/previews/<%= preview._id %>/comments/<%= comment._id %>/replies" method="POST">
+                                    <div class="field">
+                                       <textarea name="content" autofocus><%=reply.username %> </textarea>
+                                    </div>
+                                    <div>
+                                       <button type="submit" class="mini ui grey button">Add Reply</button>
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                        <% }); %>    
+                     </div>
+                  <% } %>
+               </div>
+            </div>
+         </div>
+      <% }); %>
+   </div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,85 @@
+<% include ../partials/header %>
+
+<div class="ui main text container">
+   <!-- show another search form if we have no match from the main search -->
+   <% if(noMatch !== null) { %>
+      <h3 id="no_match"><%= noMatch %></h3>
+      <p>
+      <form action="/previews/pages/1" method="GET" >
+         <div>
+            <input type="text" name="search" placeholder="Preview search..." >
+            <input type="submit" value="Search">
+         </div>
+      </form>
+      </p>           
+   <% } %>     
+   <!-- show the details for each preview -->
+   <div  class="ui top attached ">
+      <div id="jumbo" class="ui divided items">
+         <% previews.forEach(function(preview){ %>
+         <h4 class="ui horizontal divider">
+            <span id="dateCreatedPreview"><em>Added by: </em><a href="/users/<%= preview.author.id %>"><%= preview.author.username %></a> - <%= preview.created.toDateString() %></span>
+         </h4>
+         <div class="item">
+            <div class="image">
+               <img src="<%= preview.image %>" >
+            </div>
+            <div class="content">
+               <a class="header" id="preview_title" href="/previews/<%= preview._id %>">  <u><%= preview.title %></u> </a>
+               <div class="meta">
+                  <span><strong>Competition: </strong> <%= preview.competition%></span>
+               </div>
+               <div class="meta">
+                  <span><strong>Date: </strong> <%= preview.date.toDateString() %></span>
+               </div>
+               <div class="meta">
+                  <span><strong>Kick-Off at: </strong> <%= preview.hour+" " %>EEST</span>
+               </div>
+               <div class="meta">
+                  <span><strong>Venue: <%= preview.stadium %></strong> </span>
+               </div>
+               <div  class="textWhite">
+                  <p><em><%- preview.body.substring(0,75) %>...</em></p>
+               </div>
+               <div class="extra">
+                  <a class=" ui mini grey button" href="/previews/<%= preview._id %>">  
+                  Read More 
+                  </a>
+               </div>
+            </div>
+         </div>
+         <% }); %>
+      </div>
+   </div>
+   <!-- show pagination -->
+   <% if (pages > 0 && noMatch === null) { %>
+      <ul class="pagination text-center">
+         <% if (current == 1) { %>
+            <li class="disabled"><a>First</a></li>
+         <% } else { %>
+            <li><a href="/previews/pages/1">First</a></li>
+         <% } %>
+         <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+         <% if (i !== 1) { %>
+            <li class="disabled"><a>...</a></li>
+         <% } %>
+         <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+            <% if (i == current) { %>
+               <li class="active"><a><%= i %></a></li>
+            <% } else { %>
+               <li><a href="/previews/pages/<%= i %>"><%= i %></a></li>
+            <% } %>
+            <% if (i == Number(current) + 4 && i < pages) { %>
+               <li class="disabled"><a>...</a></li>
+            <% } %>
+         <% } %>
+         <% if (current == pages) { %>
+            <li class="disabled"><a>Last</a></li>
+         <% } else { %>
+            <li><a href="/previews/pages/<%= pages %>">Last</a></li>
+         <% } %>
+      </ul>
+   <% } %>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+<div class="ui main text container">
+   <div  id="new_title" class="ui huge header">Edit comment</div>
+   <form class="ui form" action="/previews/<%= blog_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+      <div class="field">
+         <label>Message</label>
+         <textarea name="comment[text]"> <%= comment.text %></textarea>
+      </div>
+      <input class="ui green button" type="submit" value="Save changes">
+   </form>
+</div>
+<% include ../partials/footer %>
