@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Vlad",
   "license": "ISC",
@@ -19,7 +20,6 @@
     "express-sanitizer": "^1.0.2",
     "express-session": "^1.15.6",
     "express-validator": "^5.2.0",
-    "locus": "^2.0.1",
     "method": "^2.0.0",
     "method-override": "^2.3.10",
     "moment": "^2.22.1",
