@@ -23,7 +23,7 @@ var upload = multer({
 
 var cloudinary = require('cloudinary');
 cloudinary.config({
-    cloud_name: 'dyaekvijr',
+    cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
@@ -86,7 +86,6 @@ router.get('/pages/:page', function(req, res, next) {
 
 //CREATE ROUTE - add new preview to DB
 router.post("/", middleware.isLoggedIn, middleware.isAdmin, upload.single('image'), (req, res) => {
-    req.body.preview = req.sanitize(req.body.preview.body);
     cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
         if (err) {
             req.flash('error', err.message);
@@ -100,7 +99,7 @@ router.post("/", middleware.isLoggedIn, middleware.isAdmin, upload.single('image
         }
         Preview.create(req.body.preview, (err, preview) => {
             if (err) {
-                req.flash('error', err.message);
+                req.flash('error', "Something went wrong. Couldn't add the preview.");
                 return res.redirect('back');
             } else {
                 res.redirect("/previews/" + preview._id);
