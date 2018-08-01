@@ -15,7 +15,7 @@ https://enigmatic-woodland-49746.herokuapp.com
 > - <b>Register a <a href="https://cloudinary.com/">Cloudinary</a> account to use for hosting photos</b></br>
 
 <b>Clone or download this repository:</b></br>
-> - https://github.com/vlad-coman/World-Cup-2018-Soccer-Previews.git
+> - https://github.com/vlad-coman/FIFA-World-Cup-2018-match-analyses.git
 </br>
 <b>Download and install the following technologies:</b></br>
 <ul>
