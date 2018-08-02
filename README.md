@@ -22,8 +22,8 @@ https://enigmatic-woodland-49746.herokuapp.com
   <li><a href="https://nodejs.org/en/download/">Node.js</a></li>
   <li><a href="https://www.mongodb.com/">MongoDB</a> - NoSQL database</li>
 </ul>
-<b>Move into World Cup 2018 Previews folder from the cloned repository</b>
-<pre>cd World\ Cup\ 2018\ Previews/
+<b>Move into cloned or downloaded repository</b>
+<pre>cd FIFA-World-Cup-2018-match-analyses-master
 </pre>
 <b>Install all dependencies from package.json file like in the example below</b></br>
 <pre>npm init</pre>
