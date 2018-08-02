@@ -6,7 +6,7 @@ https://enigmatic-woodland-49746.herokuapp.com
 
 # Tehnologies used
 <li>FRONTEND: HTML5, CSS3, JavaScript(ES6), Bootstrap</li>
-<li>BACKEND: NodeJS, NPM, ExpressJS, Nodemailer, REST, PassportJS, Moment.JS</li>
+<li>BACKEND: NodeJS, NPM, ExpressJS, Nodemailer, REST, EJS, PassportJS, Moment.JS</li>
 <li>DATABASE: MongoDB</li>
 <li>Remote Hosting on Heroku and MongoLab</li>
 
