@@ -20,7 +20,7 @@
         auth = require("./routes/auth"),
         landing = require("./routes/landing");
 
-  // mongoose.connect("mongodb://localhost/world_cup_previews_app");
+  
   mongoose.connect(process.env.DB_URL);
   app.use(bodyParser.urlencoded({
       extended: true

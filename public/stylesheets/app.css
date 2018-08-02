@@ -34,7 +34,7 @@ i.icon {
 	margin-top: 3em;
 } 
 .ui.fluid.selection.dropdown {
-	padding-bottom: 7;
+	padding-bottom: 7px;
 }
 .medium.textWhite.textCentered {
 	margin-top: 2em;
@@ -93,7 +93,3 @@ i.icon {
 	background: #E3E0E0;
 }
 
-/*#jumbo{
-     background: white;
-}
-*/
